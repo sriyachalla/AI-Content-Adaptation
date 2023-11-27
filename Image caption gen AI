@@ -1,0 +1,38 @@
+pip install torch torchvision
+
+import torch
+from torchvision.models.detection import fasterrcnn_resnet50_fpn
+from torchvision.transforms import functional as F
+from PIL import Image
+import requests
+
+# Load a pre-trained Faster R-CNN model
+model = fasterrcnn_resnet50_fpn(pretrained=True)
+model.eval()
+
+# Function to perform object detection and create a caption
+def generate_caption(image_url):
+    # Load the image from the internet
+    response = requests.get(image_url)
+    image = Image.open(requests.get(image_url, stream=True).raw)
+    
+    # Convert to tensor
+    image_tensor = F.to_tensor(image).unsqueeze(0)
+
+    # Perform inference
+    with torch.no_grad():
+        predictions = model(image_tensor)
+
+    # Process predictions
+    labels = predictions[0]['labels']
+    labels = [model.transform.normalize_label(label.item()) for label in labels]
+
+    # Generate a simple caption
+    unique_labels = set(labels)
+    caption = "This image likely contains: " + ", ".join(unique_labels) + "."
+    return caption
+
+# Example usage
+image_url = 'https://example.com/image.jpg' # replace with your image URL
+caption = generate_caption(image_url)
+print(caption)

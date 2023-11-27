@@ -1,4 +1,4 @@
-#Content Adaptation Tool
+Content Adaptation Tool
 
 Industry: Content Creation Tools
 

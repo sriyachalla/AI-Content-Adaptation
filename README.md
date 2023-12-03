@@ -8,6 +8,9 @@ Our Product: Our platform seamlessly integrates AI to spare you from the time-co
 
 AI-Powered Multi-Platform Adaptation
 
+<img width="321" alt="Screenshot 2023-12-03 at 12 25 39 PM" src="https://github.com/sriyachalla/AI-Content-Adaptation/assets/100821752/7ed71065-9bdd-47b8-a110-e9bf853bb9c5">
+
+
 Customization Options and Real-Time Previews
 
 Automatic Publishing
